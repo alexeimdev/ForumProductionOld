@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Get_All_Nodes">
+        <s:complexType />
+      </s:element>
+      <s:element name="Get_All_NodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_All_NodesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessages_ByNodes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Selected_NodeNames" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Delimiter" type="s1:char" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessages_ByNodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessages_ByNodesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessages_ByParamSeverity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Selected_NodeNames" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msgSeverity" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Delimiter" type="s1:char" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessages_ByParamSeverityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessages_ByParamSeverityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_UserName">
+        <s:complexType />
+      </s:element>
+      <s:element name="Get_UserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_UserNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Get_All_NodesSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_All_Nodes" />
+  </wsdl:message>
+  <wsdl:message name="Get_All_NodesSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_All_NodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessages_ByNodesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessages_ByNodes" />
+  </wsdl:message>
+  <wsdl:message name="GetMessages_ByNodesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessages_ByNodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessages_ByParamSeveritySoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessages_ByParamSeverity" />
+  </wsdl:message>
+  <wsdl:message name="GetMessages_ByParamSeveritySoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessages_ByParamSeverityResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_UserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_UserName" />
+  </wsdl:message>
+  <wsdl:message name="Get_UserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_UserNameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="Get_All_Nodes">
+      <wsdl:input message="tns:Get_All_NodesSoapIn" />
+      <wsdl:output message="tns:Get_All_NodesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages_ByNodes">
+      <wsdl:input message="tns:GetMessages_ByNodesSoapIn" />
+      <wsdl:output message="tns:GetMessages_ByNodesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages_ByParamSeverity">
+      <wsdl:input message="tns:GetMessages_ByParamSeveritySoapIn" />
+      <wsdl:output message="tns:GetMessages_ByParamSeveritySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_UserName">
+      <wsdl:input message="tns:Get_UserNameSoapIn" />
+      <wsdl:output message="tns:Get_UserNameSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_All_Nodes">
+      <soap:operation soapAction="http://tempuri.org/Get_All_Nodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages_ByNodes">
+      <soap:operation soapAction="http://tempuri.org/GetMessages_ByNodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages_ByParamSeverity">
+      <soap:operation soapAction="http://tempuri.org/GetMessages_ByParamSeverity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_UserName">
+      <soap:operation soapAction="http://tempuri.org/Get_UserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_All_Nodes">
+      <soap12:operation soapAction="http://tempuri.org/Get_All_Nodes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages_ByNodes">
+      <soap12:operation soapAction="http://tempuri.org/GetMessages_ByNodes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages_ByParamSeverity">
+      <soap12:operation soapAction="http://tempuri.org/GetMessages_ByParamSeverity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_UserName">
+      <soap12:operation soapAction="http://tempuri.org/Get_UserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://v-celgold/OVO/JavaConsole/HPOV_Java_Console.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://v-celgold/OVO/JavaConsole/HPOV_Java_Console.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

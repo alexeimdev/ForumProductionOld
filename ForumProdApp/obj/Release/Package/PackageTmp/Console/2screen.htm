@@ -1,0 +1,571 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+
+
+    <title>main screen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="jquery-latest.js"></script>
+    <script  type="text/javascript" src="bootstrap_min_3_3_4.js"></script>
+    <script type="text/javascript" src="excanvas_min.js"></script>
+    <script type="text/javascript" src="jquery_flot_min.js"></script>
+    <script type="text/javascript" src="jquery_flot_pie_min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script type="text/javascript" src="forcircle.js"></script>
+    <script type="text/javascript" src="f"></script>
+
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.4.1/canvas.min.js"></script>
+
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+      <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+      <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+      <!--<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+      <!--<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>-->
+      <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+      <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+     
+  
+
+<style type="text/css">
+    
+    #list_color
+    {
+        background-color : #f8dcce;
+        }
+        
+            #list_color:hover
+    {
+        background-color : #f2c4ae;
+        }
+        
+        
+    .dropdown-menu
+    {
+        color : Silver;
+        }
+    .collaps_mnu
+    {
+        float : right;
+        margin-right: 10px;
+        }
+
+    
+.img_log{
+    margin-top: -15px;
+    margin-left: 8px;
+    width: 37px;
+    height: 37px;
+    }
+
+.e
+{
+   color: #535353; 
+    }
+
+
+
+#flotbutton{
+margin-top: 21%;
+ 
+    font-size:20px
+}
+h2 {
+      color: Black;
+    text-align:center;
+
+}
+p {
+      color: Black;
+    text-align:center;
+  
+}
+#text1 
+{
+    margin-top: 25%;
+    }
+
+</style>
+    <script type="text/javascript">
+
+
+
+
+        //        window.refresh();
+//        alert(chkId);
+//        strValue = strValue.replace("[]", "");
+//        strValue = strValue.replace(/\r?\n/g, "");
+//        strValue = strValue.replace("][", ",");
+//        strValue = strValue.split("][");
+        //        strValue = strValue.join(",");
+ 
+//                document.write(strValue);
+        //       alert("Success: " + JSON.parse(strValue)[1].NODE_NAME);
+
+
+        strValue = window.localStorage.getItem("111");
+         if (strValue != null) {
+         strValue = strValue.split("[]");
+         strValue = strValue.join("");
+         }
+         chkId = window.localStorage.getItem("222");
+            chkId4 = window.localStorage.getItem("444");
+         
+         function previoslyselected() {
+            chkId = window.localStorage.getItem("444");
+            window.localStorage.setItem("222", chkId);
+
+           
+            GetMessages_ByNodes(chkId)
+        }
+
+
+
+        $(document).ready(function () {
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////Get USER NAME////////////////////////////////////////////////////////////////////
+            $.ajax({
+                type: "Post",
+                url: "HPOV_Java_Console.asmx/getName",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                async: false,
+                dataType: "json",
+                success: function (msg) {
+                   
+                    if (msg.d.indexOf('NotAllowed') > 0) {
+                        $('#flotcontainer').append('<p id = "text1">Hpovo app <br>אין לך הרשאות למערכת פנה לצוות אוטומציה <br> qc-user@cellcom.co.il</p>');
+                        document.stop();
+                    } else {
+                        document.getElementById('123').innerHTML = 'Hello, ' + msg.d;
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('error');
+                }
+
+            });
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //            document.cookie = "strValue" + strValue;;
+            //            alert(document.cookie);
+            //////////////refresh/////////////////
+            //          time = window.localStorage.getItem("01");
+
+            //         time = window.localStorage.getItem("01");
+            time = document.cookie; //.substr(35, 39);
+            //            alert(time);
+            if (document.cookie == "") {
+                time = 300;
+                //                alert(time);
+            }
+            setTimeout(function () {
+                //                alert(time);
+                window.location.reload(1);
+            }, time * 1000);
+
+            ////////////////////////////////////
+            if (strValue == null) {
+                //            change the innerHTML property of the element whose id is 'text' to 'So is HTML!'
+                document.getElementById('text').innerHTML = 'Sorry, there is no information about node!';
+
+                $('.jumbotron1').append(' <a href = "Get_All_Nodes.htm"><button class="btn btn-primary btn-block" id="flotbutton"  type="button" >Choose node(s)</button></a>');
+            }
+            if (strValue == "") {
+                //change the innerHTML property of the element whose id is 'text' to 'So is HTML!'
+                document.getElementById('text').innerHTML = 'Sorry, there is no information about node!';
+                $('.jumbotron1').append(' <a href = "Get_All_Nodes.htm"><button class="btn btn-primary btn-block" id="flotbutton"  type="button" >Choose node(s)</button></a>');
+            }
+
+            if (chkId.indexOf(";") < 0) {
+                $('#myNavbar1').append(' <button id="Button2" class="btn btn-default btn-sm" type="button" onclick="previoslyselected()"><span class="glyphicon glyphicon-refresh"></span></button>');
+
+            }
+        });
+
+
+
+        cId = chkId4.split(";");
+
+        if (strValue != "") {
+            var msgJ = JSON.parse(strValue);
+        }
+       
+
+            
+        function GetMessages_ByNodes(Open) {
+
+            $.ajax({
+                type: "Post",
+                url: "HPOV_Java_Console.asmx/GetMessages_ByNodes",
+                data: "{Selected_NodeNames:'" + Open + "', Delimiter:';'}",
+                contentType: "application/json; charset=utf-8",
+                async: false,
+                dataType: "json",
+                success: function (msg) {
+                    msgJ = JSON.parse(msg.d);
+                           strValue = msg.d;
+
+                    window.localStorage.setItem("111", msg.d);
+                    window.localStorage.setItem("222", Open);
+
+                    location.reload();
+                    window.ass = 101;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('error');
+                }
+
+            });
+        }
+
+
+
+
+
+        $(document).ready(function () {
+            for (var obj in cId) {
+                if (cId[obj] != "") {
+                    $('.dropdown-menu').append('<li><input type="checkbox" class="chkNumber"  value=" ' + cId[obj] + '" />' + cId[obj] + '</li>');
+                }
+            }
+            $('.dropdown-menu, .dropdown-menu label').click(function (e) {
+                e.stopPropagation();
+            });
+            $('#btnGetAll').click(function () {
+
+                if ($('.chkNumber:checked').length) {
+                    var Open = '';
+
+                    $('.chkNumber:checked').each(function () {
+                        Open += $(this).val() + " ;";
+                    });
+                    //                chkId = chkId.slice(0, -1);
+                    Open = Open.replace(/\s+/g, '');
+                }
+                GetMessages_ByNodes(Open)
+            });
+
+            $(function () {
+                $('input[type="checkbox"]').each(function () {
+                    if (localStorage.getItem($(this).attr('value')) == 'true') {
+                        $(this).attr('checked', true);
+                        // alert("checkbox add- success");
+                    }
+                });
+                $('input[type="checkbox"]').on('click', function () {
+                    var isChecked = ($(this).is(':checked')) ? true : false;
+                    localStorage.setItem($(this).attr('value'), isChecked);
+                    // alert("get checkbox - success");
+                });
+            });
+
+
+
+            k = new Array(5);
+            n = new Array(5);
+            for (i = 0; i < 5; i++) {
+                k[i] = 0;
+                n[i] = 0;
+            }
+            for (var obj in strValue) {
+
+                if (msgJ[obj] == null) {
+                    break;
+                }
+
+                if (msgJ[obj].SEVERITY == "1") {
+
+                    i = 0;
+                    k[i] += 1;
+                    n[i] = "Unknown";
+                    if (k[i] < 2) {
+                        $('#stage').append('<a href = "screen3.htm" class="list-group-item list-group-item-info"><span id=0 class="badge">' + k[i] + '</span>' + n[i] + '</a>');
+                    } else if (k[i] > 1) {
+
+                        var el = document.getElementById(0).innerHTML = k[i];
+
+                    }
+                } else if (msgJ[obj].SEVERITY == "2") {
+
+                    i = 1;
+                    k[i] += 1;
+                    n[i] = "Normal";
+                    if (k[i] < 2) {
+                        $('#stage').append('<a  href = "screen3.htm" onclick="GetMessages_ByParamSeverity(i=2)" class="list-group-item list-group-item-info"><span id=1 class="badge">' + k[i] + '</span>' + n[i] + '</a>');
+                    } if (k[i] > 1) {
+
+                        var el = document.getElementById(1).innerHTML = k[i];
+                    }
+                } else if (msgJ[obj].SEVERITY == "4") {
+
+                    i = 2;
+                    k[i] += 1;
+                    n[i] = "Warning";
+                    if (k[i] < 2) {
+                        $('#stage').append('<a href = "screen3.htm" onclick="GetMessages_ByParamSeverity(i=4)" class="list-group-item list-group-item-danger"><span id=2 class="badge">' + k[i] + '</span>' + n[i] + '</a>');
+                    } if (k[i] > 1) {
+
+                        var el = document.getElementById(2).innerHTML = k[i];
+
+                    }
+                } else if (msgJ[obj].SEVERITY == "8") {
+
+                    i = 3;
+                    k[i] += 1;
+                    n[i] = "Critical";
+                    if (k[i] < 2) {
+                        $('#stage').append('<a href = "screen3.htm"   onclick="GetMessages_ByParamSeverity(i=8)" class="list-group-item list-group-item-warning"><span id=3 class="badge">' + k[i] + '</span>' + n[i] + '</a>');
+                    } else if (k[i] > 1) {
+
+                        var el = document.getElementById(3).innerHTML = k[i];
+                    }
+                } else if (msgJ[obj].SEVERITY == "32") {
+
+                    i = 4;
+                    k[i] += 1;
+                    n[i] = "Major";
+                    if (k[i] < 2) {
+                        $('#stage').append('<a href = "screen3.htm" onclick="GetMessages_ByParamSeverity(i=32)" id = "list_color"  class="list-group-item"><span id=4 class="badge">' + k[i] + '</span>' + n[i] + '</a>');
+                    } else if (k[i] > 1) {
+
+                        var el = document.getElementById(4).innerHTML = k[i];
+                    }
+                }
+
+
+            }
+
+
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $(function () {
+            $("#flotcontainer").bind("plotclick", function (event, pos, obj) {
+                if (!obj) { return; }
+                percent = parseFloat(obj.series.percent).toFixed(2);
+                if (obj.series.label == "Normal") {
+                    GetMessages_ByParamSeverity(i = 2);
+                    location.assign('screen3.htm');
+                }
+                if (obj.series.label == "Warning") {
+                    GetMessages_ByParamSeverity(i = 4);
+                    location.assign('screen3.htm');
+                }
+                if (obj.series.label == "Critical") {
+                    GetMessages_ByParamSeverity(i = 8);
+                    location.assign('screen3.htm');
+                }
+                if (obj.series.label == "Major") {
+                    GetMessages_ByParamSeverity(i = 32);
+                    location.assign('screen3.htm');
+                }
+
+                alert(obj.series.label + " (" + percent + "%)");
+
+            });
+        });
+       
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////  PIE CHART  /////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////http://canvasjs.com/docs/charts /////////////////////////////////////////////////////////
+        window.onload = function () {
+
+            CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+                "#ede1ab",
+                "#db5e63",
+                "#E68A5C",
+                ]);
+
+
+
+            for (i = 0; i < 5; i++) {
+                if (n[i] == null) {
+                    n[i] = 0;
+                    k[i] = 0;
+                }
+            }
+            for (i = 0; i < 5; i++) {
+                if (k[i] == 0) {
+
+                    k[i] = null;
+                }
+            }
+            var chart = new CanvasJS.Chart("chartContainer",
+	{
+
+
+
+
+
+	    backgroundColor: "#d9d5d6",
+	    colorSet: "greenShades",
+	    title: {
+	        fontFamily: "arial black"
+	    },
+	    animationEnabled: true,
+	    legend: {
+	        verticalAlign: "bottom",
+	        horizontalAlign: "center"
+	    },
+	    theme: "theme2",
+	    data: [
+		{
+		    click: function (e) {
+		        //		        alert("dataSeries Event => Type: " + e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: " + e.dataPoint.y + " }");
+
+		        if (e.dataPoint.name == n[2]) {
+		            GetMessages_ByParamSeverity(i = 4);
+		            location.assign('screen3.htm');
+		        }
+		        if (e.dataPoint.name == n[3]) {
+		            GetMessages_ByParamSeverity(i = 8);
+		            location.assign('screen3.htm');
+		        }
+		        if (e.dataPoint.name == n[4]) {
+		            GetMessages_ByParamSeverity(i = 32);
+		            location.assign('screen3.htm');
+		        }
+		    },
+		    type: "pie",
+		    indexLabelFontFamily: "Helvetica",
+		    indexLabelFontSize: 18,
+		    indexLabelFontWeight: "bold",
+		    startAngle: 0,
+		    indexLabelFontColor: "#535353",
+		    indexLabelLineColor: "black",
+		    indexLabelPlacement: "inside",
+		    //toolTipContent: "{name}: {y}",
+		    showInLegend: true,
+		    indexLabel: "{y}",
+		    dataPoints: [
+
+                { y: k[2], name: "Warning", legendMarkerType: "triangle" },
+				{ y: k[3], name: "Critical", legendMarkerType: "circle" },
+				{ y: k[4], name: "Major", legendMarkerType: "square" },
+
+			]
+		}
+		]
+	});
+            chart.render();
+
+        }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ function GetMessages_ByParamSeverity(i) {
+
+    
+     $.ajax({
+         type: "Post",
+         url: "HPOV_Java_Console.asmx/GetMessages_ByParamSeverity",
+         data: "{Selected_NodeNames:'" + chkId + "',msgSeverity:'" + i + "', Delimiter:';'}",
+         contentType: "application/json; charset=utf-8",
+         async: false,
+         dataType: "json",
+         success: function (msg) {
+
+             window.localStorage.setItem("333", msg.d);
+             window.localStorage.setItem("555", i);
+
+         },
+         error: function (xhr, ajaxOptions, thrownError) {
+             alert('error');
+         }
+
+     });
+                }
+
+    </script>
+</head>
+
+
+<!--<div class = "loader"></div>-->
+<body style="background:#444444">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">   
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span> 
+      <span class="icon-bar"></span>               
+      </button>
+      
+      <a class="navbar-brand" href="2screen.htm">
+      <div class = "row"><img src="logo.png" class = "img_log" />Cellcom Hpovo</div>
+      </a>
+</div>
+
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right" id="myNavbar1"> 
+                 <div class = "container-fluid">
+                    <div class = "row">
+                        <div class = "collaps_mnu">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">בחר שרת<span class="caret"></span></button>             
+                            <a href = "Get_All_Nodes.htm"><button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-cog"></span></button></a>
+                                <ul class="dropdown-menu">
+                                    <a href = "2screen.htm"><button id="btnGetAll" style="display: block; width: 100%;" class="btn" type="button">עדכן</button></a>
+                                </ul>
+                        </div>
+                    </div>
+                 </div>
+            </ul>
+        </div>
+
+</div>
+</nav>
+
+
+<div id="aaa" class="container">
+
+  <div class="jumbotron">
+  <h6 id="123"></h6>
+  <h2 class="e">התראות</h2>
+  <p id = "text"></p>
+  <p class="jumbotron1"></p>
+
+
+
+     <div class="container">
+        <div class="container">
+            <div id="chartContainer" class="center" style="height: 500px; width: 100%; "></div>
+        </div>
+        <div id="flotcontainer"></div>
+<!--<p id = "text"></p>-->
+        <div class="container" >
+            <ul class="list-group" id="stage"></ul> 
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+ 
+ 
+
+
+
+ 
+  

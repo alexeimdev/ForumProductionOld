@@ -1,0 +1,18 @@
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.dll
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.pdb
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\bin\Newtonsoft.Json.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\Newtonsoft.Json.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.pdb
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\alexeime\Desktop\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.csprojResolveAssemblyReference.cache
+C:\Users\alexeime\Desktop\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.dll
+C:\Users\alexeime\Desktop\ForumProdApp\ForumProdApp\obj\Debug\ForumProdApp.pdb
+C:\Users\alexeime\Desktop\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll.config
+C:\Users\alexeime\Desktop\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+C:\Users\alexeime\Desktop\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb

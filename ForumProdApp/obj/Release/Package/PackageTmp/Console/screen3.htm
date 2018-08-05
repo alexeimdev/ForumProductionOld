@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Messages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript"  src="jquery_min_1_11_1.js"></script>
+    <script type="text/javascript" src="json2.js"></script>
+    <script type="text/javascript" src="bootstrap_min_3_3_4.js"></script>
+
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>-->
+<style type = "text/css">
+// More practical CSS...
+// using mobile first method (IE8,7 requires respond.js polyfill https://github.com/scottjehl/Respond)
+
+$breakpoint-alpha: 480px; // adjust to your needs
+
+.rwd-table {
+  margin: 1em 0;
+  min-width: 300px; // adjust to your needs
+  
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
+  }
+  
+  td {
+    display: block; 
+    
+    &:first-child {
+      padding-top: .5em;
+    }
+    &:last-child {
+      padding-bottom: .5em;
+    }
+
+    &:before {
+      content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+      font-weight: bold;
+
+      // optional stuff to make it look nicer
+      width: 6.5em; // magic number :( adjust according to your own content
+      display: inline-block;
+      // end options
+      
+      @media (min-width: $breakpoint-alpha) {
+        display: none;
+      }
+    }
+  }
+  
+  th, td {
+    text-align: left;
+    
+    @media (min-width: $breakpoint-alpha) {
+      display: table-cell;
+      padding: .25em .5em;
+      
+      &:first-child {
+        padding-left: 0;
+      }
+      
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+  }
+  
+  
+}
+
+
+// presentational styling
+
+@import 'http://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+
+body {
+  padding: 0 2em;
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: #34495E;
+  background: #fff;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: #34495E;
+}
+
+.rwd-table {
+  background: #fff;
+  color: #34495E;
+  border-radius: .4em;
+  overflow: hidden;
+  tr {
+    border-color: lighten(#34495E, 10%);
+  }
+  th, td {
+    margin: .5em 1em;
+    @media (min-width: $breakpoint-alpha) { 
+      padding: 1em !important; 
+    }
+  }
+  th, td:before {
+    color: #34495E;
+  }
+}
+</style>
+
+    <script type="text/javascript">
+
+        var strValue = window.localStorage.getItem("333");
+        var chkId = window.localStorage.getItem("222");
+        chkId4 = window.localStorage.getItem("444");
+        var i = window.localStorage.getItem("555");
+        
+       
+    strValue = strValue.split("[]");
+    strValue = strValue.join("");
+//    document.write(strValue);
+
+//    var msgJ = JSON.parse(strValue);
+
+    if (strValue != "") {
+        var msgJ = JSON.parse(strValue);
+    }
+
+
+
+
+    function GetMessages_ByParamSeverity(chkId, i) {
+
+        
+        $.ajax({
+            type: "Post",
+            url: "HPOV_Java_Console.asmx/GetMessages_ByParamSeverity",
+            data: "{Selected_NodeNames:'" + chkId + "',msgSeverity:'" + i + "', Delimiter:';'}",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            dataType: "json",
+            success: function (msg) {
+
+                window.localStorage.setItem("333", msg.d);
+                window.localStorage.setItem("222", chkId);
+                location.reload();                                
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('error GetMessages_ByParamSeverity');
+            }
+
+        });
+    }
+
+
+
+    $(document).ready(function () {
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////Get USER NAME////////////////////////////////////////////////////////////////////
+        $.ajax({
+            type: "Post",
+            url: "HPOV_Java_Console.asmx/Get_UserName",
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            dataType: "json",
+            success: function (msg) {
+                //                                        msgJ = JSON.parse(msg.d);
+                //                                        strValue = msg.d;
+
+
+                if (msg.d.indexOf('NotAllowed') > 0) {
+                    $('#flotcontainer').append('<p id = "text1">Hpovo app <br>אין לך הרשאות למערכת פנה לצוות אוטומציה <br> qc-user@cellcom.co.il</p>');
+                    document.stop();
+                } else {
+                    document.getElementById('123').innerHTML = 'Hello, ' + msg.d;
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('error');
+            }
+
+        });
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (chkId.indexOf(";") < 0) {
+            $('#myNavbar1').append(' <button id="Button2" class="btn btn-default btn-sm" type="button" onclick="wis()"><span class="glyphicon glyphicon-refresh"></span></button>');
+
+        }
+        //////////////refresh/////////////////   
+        //    time = window.localStorage.getItem("01");
+        time = document.cookie;
+        if (document.cookie == "") {
+            time = 300;
+        }
+        setTimeout(function () {
+            //                alert(time);
+            window.location.reload(1);
+        }, time * 1000);
+        //////////
+        //        cId = chkId.split(";");
+        //        for (var obj in cId) {
+
+        //            $('.dropdown-menu').append('<li   class = "myLink" ><a href="#" >' + cId[obj] + '</a></li>');
+        //        }
+        cId = chkId4.split(";");
+        for (var obj in cId) {
+            if (cId[obj] != "") {
+                $('.dropdown-menu').append('<li><input type="checkbox" class="chkNumber"  value=" ' + cId[obj] + '" />' + cId[obj] + '</li>');
+            }
+        }
+        $('.dropdown-menu, .dropdown-menu label').click(function (e) {
+            e.stopPropagation();
+        });
+
+        $('#btnGetAll').click(function () {
+
+            if ($('.chkNumber:checked').length) {
+                var chkId = '';
+
+                $('.chkNumber:checked').each(function () {
+                    chkId += $(this).val() + " ;";
+
+                });
+                //                chkId = chkId.slice(0, -1);
+                chkId = chkId.replace(/\s+/g, '');
+            }
+            GetMessages_ByParamSeverity(chkId, i)
+        });
+
+
+        $('input[type="checkbox"]').each(function () {
+            if (localStorage.getItem($(this).attr('value')) == 'true') {
+                $(this).attr('checked', true);
+                // alert("checkbox add- success");
+            }
+        });
+        $('input[type="checkbox"]').on('click', function () {
+            var isChecked = ($(this).is(':checked')) ? true : false;
+            localStorage.setItem($(this).attr('value'), isChecked);
+            //alert("get checkbox - success");
+        });
+
+        //        $('.myLink').click(function () {
+        //            chkId = $(this).text();
+        ////            alert(chkId);
+        //            GetMessages_ByParamSeverity(i)
+
+        //        });
+
+
+
+
+
+
+
+
+
+
+        if (i == "1") {
+            document.getElementById('text').innerHTML = "Unknown";
+        } else if (i == "2") {
+            document.getElementById('text').innerHTML = "Normal";
+        } else if (i == "4") {
+            document.getElementById('text').innerHTML = "Warning";
+        } else if (i == "8") {
+            document.getElementById('text').innerHTML = "Critical";
+        } else if (i == "32") {
+            document.getElementById('text').innerHTML = "Major";
+        }
+        for (var obj in strValue) {
+            //            document.getElementById('node').innerHTML = msgJ[obj].NODE_NAME;
+            //            document.getElementById('mes').innerHTML = msgJ[obj].TEXT_PART;
+            //            document.getElementById('time').innerHTML = msgJ[obj].LOCAL_LAST_TIME_RECEIVED;
+            strValue = msgJ[obj].LOCAL_LAST_TIME_RECEIVED.split("-");
+            strValue = strValue.join("/");
+            strValue = strValue.split("T");
+            strValue = strValue.join("\n");
+            $('#stage').append('<tr ><td>' + msgJ[obj].NODE_NAME + '</td><td >' + msgJ[obj].TEXT_PART + '</td><td >' + strValue + '</td></tr>');
+        }
+    });
+
+    function wis() {
+        chkId = window.localStorage.getItem("444");
+       window.localStorage.setItem("222", chkId);
+        GetMessages_ByParamSeverity(i)
+        //        GetMessages_ByNodes(chkId)
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+</head>
+<body style="background:#444444">
+
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">      
+      <span class = "icon-bar"></span> 
+      <span class = "icon-bar"></span>      
+      <span class = "icon-bar"></span>                       
+      </button>
+     <a href="2screen.htm"><button class="btn" type="button"><span class="glyphicon glyphicon-chevron-left"></span>חזור</button></a>
+     <!-- <a href="2screen.htm" class="navbar-brand" ><span class="glyphicon glyphicon-chevron-left"></span>CELLCOM</a>-->
+    </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right" id="myNavbar1">  
+                    
+                       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">בחר שרת
+                    <span class="caret"></span></button>
+                  <!--  <button id="Button2" class="btn btn-default btn-sm" type="button" onclick="wis()"><span class="glyphicon glyphicon-refresh"></span></button>-->
+                    <a href = "Get_All_Nodes.htm"><button class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-cog"></span></button></a>
+
+                    <ul class="dropdown-menu">
+                     <a href = "screen3.htm"><button id="btnGetAll" style="display: block; width: 100%;" class="btn" type="button">עדכן</button></a>
+                    </ul>
+                
+            </ul>
+        </div>
+  </div>
+</nav>
+
+
+<div class="container">
+<div class="jumbotron" >
+<h2 id="text">Severities</h2>
+
+<h6 id="123"></h6>
+  <p id = "text1"></p>
+
+<div class = "table-responsive">
+
+         <table class="rwd-table table table-striped table-hover table-condensed">
+         <thead>
+         <tr>
+         <th>שרת</th> 
+         <th>הודעה</th>
+         <th>זמן</th>
+         </tr>
+         </thead>
+         <tbody id="stage">
+        
+       
+         </tbody>
+         </table>
+         </div>
+</div>
+</div>
+</body>
+</html>

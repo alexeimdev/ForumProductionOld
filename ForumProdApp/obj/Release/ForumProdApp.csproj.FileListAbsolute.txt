@@ -1,0 +1,25 @@
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\bin\Newtonsoft.Json.dll
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.dll
+C:\Documents and Settings\loriaz\My Documents\Visual Studio 2010\Projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.pdb
+Q:\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+Q:\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb
+Q:\DotNet projects\ForumProdApp\ForumProdApp\bin\Newtonsoft.Json.dll
+Q:\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ResolveAssemblyReference.cache
+Q:\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.dll
+Q:\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.pdb
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.dll
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.pdb
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\Newtonsoft.Json.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.pdb
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\Newtonsoft.Json.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ResolveAssemblyReference.cache
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.dll
+\\cellcom_nt\dfs02\Groups2\SQA\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.pdb
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\bin\ForumProdApp.dll.config
+Q:\Automated\DotNet projects\ForumProdApp\ForumProdApp\obj\Release\ForumProdApp.csprojResolveAssemblyReference.cache
